@@ -1,0 +1,11 @@
+FROM docker.io/jenkins/jenkins:lts-jdk17
+
+USER root
+
+# python3-venv es necesario para crear entornos virtuales dentro del contenedor;
+# sin esto, python3 -m venv falla silenciosamente en imagenes Debian minimas.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends python3 python3-venv python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+USER jenkins
