@@ -1,5 +1,7 @@
 FROM python:3.12-slim
 
+COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.9.1 /lambda-adapter /opt/extensions/lambda-adapter
+
 WORKDIR /app
 
 # Copiamos solo requirements.txt primero (no requirements-dev.txt: la imagen
